@@ -1,6 +1,0 @@
-version: "3"
-services:
-  sample-web-app-cars-service:
-    image: dushkoavramoski/sample-web-app-cars.jar
-    ports:
-      - 9090:8080
