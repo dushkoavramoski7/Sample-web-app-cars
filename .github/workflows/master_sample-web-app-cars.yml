@@ -34,9 +34,9 @@ jobs:
         password: ${{ secrets.AzureAppService_ContainerPassword_7d1e37f53f714c599f97cb2134ed480f }}
 
     - name: Build and push container image to registry
-      uses: mr0smithers-excellent/docker-build-push@v5
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: dushkoavramoski/sample-web-app-cars
+        image: dushkoavramoski/sample-web-app-cars.jar
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
