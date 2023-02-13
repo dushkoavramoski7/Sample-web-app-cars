@@ -15,14 +15,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+    - name: Set up JDK 15
+      uses: actions/setup-java@v3
+      with:
+        java-version: '8'
+        distribution: 'adopt'
+        cache: maven
     - name: Build with Maven
-      env:
-        RELEASE_USERNAME: ${{ secrets.RELEASE_USERNAME }}
-        RELEASEY_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        BUILD_ENV: 'github-actions'
       run: mvn clean install
-
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
