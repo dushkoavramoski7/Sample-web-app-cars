@@ -46,11 +46,21 @@ jobs:
 #          docker push sample-web-app-cars.jar:$(date +%s)
 
         - name: Build and push container image to registry
+          if: github.event_name == 'push'
           uses: docker/build-push-action@v2
           with:
+            context: .
             push: true
             tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar:latest
-            contect: .
+
+          # Push the new release
+        - name: Build and Push New Release
+          if: github.event_name == 'release'
+          uses: docker/build-push-action@v2
+          with:
+            context: .
+            push: true
+            tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
