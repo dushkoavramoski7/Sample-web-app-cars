@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.AzureAppService_ContainerPassword_7d1e37f53f714c599f97cb2134ed480f }}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag sample-web-app-cars.jar:$(date +%s)
+        run: docker build . --file Dockerfile --tag dushkoavramoski/sample-web-app-cars.jar:$(date +%s)
 
       - name: Docker Push
         run: docker push ${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar
