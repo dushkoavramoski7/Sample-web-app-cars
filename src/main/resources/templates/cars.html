@@ -29,6 +29,15 @@
             </tr>
             </tbody>
         </table>
+        <form action="#" th:action="@{/cars/add}" method="post" th:object="${carObject}">
+            <label >name:</label>
+            <input type="text"  th:field="*{name}" />
+            <label>model:</label>
+            <input type="text" th:field="*{model}" />
+            <label >description:</label>
+            <input type="text"  th:field="*{description}" />
+            <button type="submit">Add</button>
+        </form>
     </div>
 </div>
 </body>

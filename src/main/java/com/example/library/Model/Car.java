@@ -1,7 +1,10 @@
 package com.example.library.Model;
 
 import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
@@ -14,6 +17,8 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Table(name = "Cars", schema = "dbo")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Car {
     @Id
     @Column(name = "id")
@@ -31,4 +36,10 @@ public class Car {
     @Column(name = "car_description")
     @Nationalized
     private String description;
+
+    public Car(String name, String model, String description) {
+        this.name = name;
+        this.model = model;
+        this.description = description;
+    }
 }
