@@ -29,21 +29,21 @@ jobs:
           username: ${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}
           password: ${{ secrets.AzureAppService_ContainerPassword_7d1e37f53f714c599f97cb2134ed480f }}
 
-          - name: Build and push container image to registry
-            if: github.event_name == 'push'
-            uses: docker/build-push-action@v2
-            with:
-              context: .
-              push: true
-              tags: ${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar:latest
+      - name: Build and push container image to registry
+        if: github.event_name == 'push'
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar:latest
 
-          - name: Build and Push New Release
-            if: github.event_name == 'release'
-            uses: docker/build-push-action@v2
-            with:
-              context: .
-              push: true
-              tags: ${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar:${{ github.sha }}
+      - name: Build and Push New Release
+        if: github.event_name == 'release'
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.AzureAppService_ContainerUsername_47cc0a33dbbf4576a2e47ba86543f42b }}/sample-web-app-cars.jar:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
