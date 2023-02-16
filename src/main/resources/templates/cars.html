@@ -30,13 +30,13 @@
             </tbody>
         </table>
         <form action="#" th:action="@{/cars/add}" method="post" th:object="${carObject}">
-            <label >name:</label>
+            <label >Car name:</label>
             <input type="text"  th:field="*{name}" />
-            <label>model:</label>
+            <label>Car model:</label>
             <input type="text" th:field="*{model}" />
-            <label >description:</label>
+            <label >Car description:</label>
             <input type="text"  th:field="*{description}" />
-            <button type="submit">Add</button>
+            <button type="submit">Insert</button>
         </form>
     </div>
 </div>
