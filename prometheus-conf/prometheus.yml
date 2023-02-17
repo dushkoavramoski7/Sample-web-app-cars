@@ -1,0 +1,20 @@
+# my global config
+global:
+   scrape_interval: 1m
+   evaluation_interval: 1m
+   scrape_timeout: 1m
+
+scrape_configs:
+  - job_name: 'spring-actuator'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 1m
+    scheme: http
+    static_configs:
+      - targets:
+        - host.docker.internal:9091
+
+  - job_name: Prometheus
+    metrics_path: '/metrics'
+    static_configs:
+      - targets:
+        - host.docker.internal:9090

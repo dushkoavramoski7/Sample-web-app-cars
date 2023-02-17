@@ -15,9 +15,11 @@ services:
     ports:
       - 3000:3000
 
-  prometus:
+  prometheus:
     image: prom/prometheus
     depends_on:
       - sample-web-app-cars-service
+    volumes:
+      - ./prometheus-conf/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090
